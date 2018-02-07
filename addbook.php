@@ -1,6 +1,6 @@
 <?php
 
-$conn = new mysqli("localhost", "root", "", "test") or die (mysqli_error());
+$conn = new mysqli("localhost", "root", "", "library") or die (mysqli_error());
 
 if(isset($_POST['submit'])){
 $title = $_POST['title'];
@@ -8,7 +8,7 @@ $page = $_POST['page'];
 $author = $_POST['author'];
 $pubyear = $_POST['pubyear'];
 
-$conn->query("INSERT INTO `user` VALUES('', '$title', '$page', '$author', '$pubyear')") or die (mysqli_error());
+$conn->query("INSERT INTO `book` VALUES('', '$title', '$page', '$author', '$pubyear')") or die (mysqli_error());
 $conn->close();
 echo "<script type='text/javascript'>alert('Successfully updated personal information!');</script>";
 echo "<script>document.location='addbook.php'</script>";
@@ -46,7 +46,7 @@ echo "<script>document.location='addbook.php'</script>";
   </thead>
   <tbody>
     <?php 
-$query = $conn->query("select * from `user`") or die (mysqli_error());
+$query = $conn->query("select * from `book`") or die (mysqli_error());
 while ($fetch = $query->fetch_array()){
 ?>
 <tr>
